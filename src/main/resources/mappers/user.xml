@@ -16,6 +16,7 @@
         where
             username = #{username}
     </select>
+
     <select id="checkEmail" resultType="java.lang.Integer">
         select
             count(*)
@@ -24,6 +25,21 @@
         where
             email = #{email}
     </select>
+
+    <select id="findById" resultType="com.store.book.entity.User">
+        select
+            id,
+            username,
+            password,
+            name,
+            email,
+            phone
+        from
+            user_tb
+        where
+            id = #{id}
+    </select>
+
     <select id="findByUsername" resultType="com.store.book.entity.User">
         select
             id,

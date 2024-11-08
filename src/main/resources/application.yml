@@ -7,7 +7,7 @@ spring:
 
   sql:
     init:
-      mode: ALWAYS
+      mode: NEVER
       schema: classpath:schema.sql
 
   h2:
