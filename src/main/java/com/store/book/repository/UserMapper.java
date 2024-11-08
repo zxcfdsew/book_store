@@ -8,4 +8,5 @@ public interface UserMapper {
     int addUser(User user);
     int checkUsername(String username);
     int checkEmail(String email);
+    User findByUsername(String username);
 }

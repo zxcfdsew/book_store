@@ -1,7 +1,6 @@
 package com.store.book.aspect;
 
 import com.store.book.dto.request.ReqSignupDto;
-import com.store.book.repository.UserMapper;
 import com.store.book.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -15,7 +14,7 @@ import org.springframework.validation.FieldError;
 @Aspect
 @Component
 @RequiredArgsConstructor
-public class ValidAspect {
+public class SignupValidAspect {
 
     private final UserService userService;
 

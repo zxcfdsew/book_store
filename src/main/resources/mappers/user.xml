@@ -24,4 +24,17 @@
         where
             email = #{email}
     </select>
+    <select id="findByUsername" resultType="com.store.book.entity.User">
+        select
+            id,
+            username,
+            password,
+            name,
+            email,
+            phone
+        from
+            user_tb
+        where
+            username = #{username}
+    </select>
 </mapper>
