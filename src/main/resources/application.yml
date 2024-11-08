@@ -7,7 +7,7 @@ spring:
 
   sql:
     init:
-      mode: NEVER
+      mode: ALWAYS
       schema: classpath:schema.sql
 
   h2:
@@ -16,5 +16,8 @@ spring:
       path: /h2-console
 
 mybatis:
-  mapper-resources:
+  mapper-locations:
     - classpath:mappers/*.xml
+
+jwt:
+  secret: 446b42e4364d3d10599ae711d1d713b622e41755d0b89764acfd65631307a0d7b62e8fdbe2fd1dcb95056ee0ab210673f11135e4407b2adf69389a1fdc7db5d371eea425bb17173323ce5f1b051f03e13d7c796d24b17aa94310a2ebb5e377dca9df30ad53f73c6c3952456b36f5161e096fe09d6a1ad3b69b96f968cbfb075ddb8cc90ca79c4f396098d13d9ef65ea1569cd1b9d924ae6e621793d19265b17d22149c40f0b1162db4454d31ccca154f7d45abcecf0c7f2457d2d9540d665393e698799e09b1c490b0122b867738be5f2bef94fbb8d384ba3677f531120fc2aba1480b32efd4cf09b5077f989581c0d29774f18e57ff8d57447da694d6804076

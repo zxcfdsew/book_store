@@ -1,17 +1,20 @@
+DROP TABLE IF EXISTS user_tb;
 CREATE TABLE user_tb (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(50) NOT NULL,
+    username VARCHAR(50) NOT NULL UNIQUE,
     password TEXT NOT NULL,
     name VARCHAR(50) NOT NULL,
-    email VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
     phone VARCHAR(20) NOT NULL
 );
 
+DROP TABLE IF EXISTS category_tb;
 CREATE TABLE category_tb (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     category_name VARCHAR(50) NOT NULL
 );
 
+DROP TABLE IF EXISTS book_tb;
 CREATE TABLE book_tb (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     category_id BIGINT NOT NULL,
@@ -23,6 +26,7 @@ CREATE TABLE book_tb (
     discount_rate INT NOT NULL DEFAULT 0
 );
 
+DROP TABLE IF EXISTS order_tb;
 CREATE TABLE order_tb (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     user_id BIGINT NOT NULL,
@@ -31,6 +35,7 @@ CREATE TABLE order_tb (
     status VARCHAR(50) NOT NULL
 );
 
+DROP TABLE IF EXISTS order_item_tb;
 CREATE TABLE order_item_tb (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     order_id BIGINT NOT NULL,
@@ -39,6 +44,7 @@ CREATE TABLE order_item_tb (
     price INT NOT NULL
 );
 
+DROP TABLE IF EXISTS review_tb;
 CREATE TABLE review_tb (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     book_id BIGINT NOT NULL,
