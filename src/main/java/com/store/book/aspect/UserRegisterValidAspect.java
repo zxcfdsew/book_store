@@ -1,6 +1,6 @@
 package com.store.book.aspect;
 
-import com.store.book.dto.request.ReqSignupDto;
+import com.store.book.dto.request.ReqUserRegisterDto;
 import com.store.book.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -14,7 +14,7 @@ import org.springframework.validation.FieldError;
 @Aspect
 @Component
 @RequiredArgsConstructor
-public class SignupValidAspect {
+public class UserRegisterValidAspect {
 
     private final UserService userService;
 
@@ -25,13 +25,13 @@ public class SignupValidAspect {
     public Object around(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         Object[] args = proceedingJoinPoint.getArgs();
         BeanPropertyBindingResult bindingResult = null;
-        ReqSignupDto dto = null;
+        ReqUserRegisterDto dto = null;
 
         for (Object arg : args) {
             if(arg.getClass() == BeanPropertyBindingResult.class) {
                 bindingResult = (BeanPropertyBindingResult) arg;
-            } else if (arg.getClass() == ReqSignupDto.class) {
-                dto = (ReqSignupDto) arg;
+            } else if (arg.getClass() == ReqUserRegisterDto.class) {
+                dto = (ReqUserRegisterDto) arg;
             }
         }
 

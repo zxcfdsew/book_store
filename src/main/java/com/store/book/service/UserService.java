@@ -1,7 +1,7 @@
 package com.store.book.service;
 
-import com.store.book.dto.request.ReqSigninDto;
-import com.store.book.dto.request.ReqSignupDto;
+import com.store.book.dto.request.ReqLoginDto;
+import com.store.book.dto.request.ReqUserRegisterDto;
 import com.store.book.entity.User;
 import com.store.book.repository.UserMapper;
 import com.store.book.security.jwt.JwtProvider;
@@ -19,11 +19,11 @@ public class UserService {
     private final BCryptPasswordEncoder passwordEncoder;
     private final JwtProvider jwtProvider;
 
-    public int addUser(ReqSignupDto dto) {
+    public int addUser(ReqUserRegisterDto dto) {
         return userMapper.addUser(dto.toEntity(passwordEncoder));
     }
 
-    public String getAccessToken(ReqSigninDto dto) {
+    public String getAccessToken(ReqLoginDto dto) {
         User user = userMapper.findByUsername(dto.getUsername());
 
         if (user == null) {

@@ -8,7 +8,7 @@ import lombok.Data;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Data
-public class ReqSignupDto {
+public class ReqUserRegisterDto {
     @Pattern(regexp = "^[a-zA-Z][a-zA-Z0-9]{5,}$", message = "아이디는 6자 이상 영문, 숫자만 입력이 가능하고 첫번째는 영문이어야 합니다.")
     private String username;
     @Pattern(regexp = "^(?=.*[a-zA-Z])(?=.*\\d)[a-zA-Z\\d]{8,16}$", message = "비밀번호는 8자 이상 16자 이하고 최소 한개 이상의 영문, 숫자가 포함되어야 합니다.")

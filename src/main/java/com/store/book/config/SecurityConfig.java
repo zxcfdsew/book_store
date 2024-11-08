@@ -1,5 +1,6 @@
 package com.store.book.config;
 
+import com.store.book.security.AuthenticationHandler;
 import com.store.book.security.filter.JwtAccessTokenFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
@@ -18,19 +19,21 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SecurityConfig {
 
     private final JwtAccessTokenFilter jwtAccessTokenFilter;
+    private final AuthenticationHandler authenticationHandler;
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(request -> request
                         .requestMatchers(
                                 AntPathRequestMatcher.antMatcher("/h2-console/**"),
-                                AntPathRequestMatcher.antMatcher("/auth/**")
+                                AntPathRequestMatcher.antMatcher("/users/**")
                         ).permitAll().anyRequest().authenticated()
                 )
                 .csrf(AbstractHttpConfigurer::disable)
                 .headers(config -> config.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .addFilterBefore(jwtAccessTokenFilter, UsernamePasswordAuthenticationFilter.class);
+                .addFilterBefore(jwtAccessTokenFilter, UsernamePasswordAuthenticationFilter.class)
+                .exceptionHandling(exception -> exception.authenticationEntryPoint(authenticationHandler));
         return http.build();
     }
 }
