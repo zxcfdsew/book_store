@@ -1,9 +1,8 @@
 package com.store.book.config;
 
-import com.store.book.security.AuthenticationHandler;
+import com.store.book.security.handler.AuthenticationHandler;
 import com.store.book.security.filter.JwtAccessTokenFilter;
 import lombok.RequiredArgsConstructor;
-import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

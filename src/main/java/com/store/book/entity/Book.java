@@ -1,5 +1,6 @@
 package com.store.book.entity;
 
+import com.store.book.dto.response.RespBookDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,6 +19,8 @@ public class Book {
     private String author;
     private LocalDateTime registerDate;
     private String bookName;
-    private Integer unitPrice;
-    private Integer discountRate;
+    private int unitPrice;
+    private int discountRate;
+
+    private String categoryName;
 }

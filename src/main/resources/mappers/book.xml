@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.store.book.repository.BookMapper">
+
+    <select id="getBooksByOption" resultType="com.store.book.entity.Book">
+        select
+            bt.id,
+            bt.category_id categoryId,
+            bt.publisher,
+            bt.author,
+            bt.register_date registerDate,
+            bt.book_name bookName,
+            bt.unit_price unitPrice,
+            bt.discount_rate discountRate,
+            ct.category_name categoryName
+        from
+            book_tb bt
+            left outer join category_tb ct on(bt.category_id = ct.id)
+        where
+            ct.category_name like concat('%', ifnull(#{category}, '') , '%')
+        order by
+            <choose>
+                <when test='sort.equals("책 이름")'>
+                    book_name desc
+                </when>
+                <when test='sort.equals("저자 이름")'>
+                    author desc
+                </when>
+                <otherwise>
+                    register_date desc
+                </otherwise>
+            </choose>
+    </select>
+</mapper>
