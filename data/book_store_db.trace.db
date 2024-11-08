@@ -1,0 +1,3 @@
+2024-11-08 23:59:14.600695+09:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USER_TB" already exists; SQL statement:
+CREATE TABLE user_tb ( id BIGINT AUTO_INCREMENT PRIMARY KEY, username VARCHAR(50) NOT NULL, password TEXT NOT NULL, name VARCHAR(50) NOT NULL, email VARCHAR(255) NOT NULL, phone VARCHAR(20) NOT NULL ) [42101-224]
